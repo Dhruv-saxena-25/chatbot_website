@@ -1,0 +1,11 @@
+langchain
+langchain_astradb 
+langchain_community
+google-generativeai 
+langchain-google-genai
+unstructured
+docx2txt
+python-dotenv 
+flask
+streamlit
+-e .

@@ -1,0 +1,81 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chatbot</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}"/>
+	</head>
+	
+	
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">		
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<!-- <img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png" class="rounded-circle user_img"> -->
+									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAxlBMVEX19fVgfYsAAAD////P2NwAvNT5+fk3R0/y8vLa2tpkZGQsOkFZdYJigI78/PwQEBDR0dHp6elXV1cVFRU5OTlKSkrj4+OysrJFRUWdnZ3Hx8ckJCRAU1zBwcGGhoarq6uRkZFxcXF5eXlRaXUyMjLFzdErKysdHR0iLDEdJSkAExsCqvYnMzlGW2UXHiHY4uYALUEBS2wCmNwBg70BdKcAPVcBXIUCjs0BapkAlqkAq8AAiJmyur0AJCkAMjkAVmEAP0gAdoV76tPwAAAPBUlEQVR4nL2caWOiSBOAiTotoHIqCFEQNZrMq3E3e8xONju7+///1NLVN4cBxLe+TCbB5rGquqr61IayuOliMPCTeNhMLNdw1lGSLfZHe5CLfdwvtkm0dgzXathEnBwHAy91lV9qyhPzAZFE+XW1uGFiLo+DSjkuzSR0P28DJfQDS6cOai1aXV79psgIs2oaVbLQQNfasZbi2XU1lLuX2tvUNxVE3qEJEpaDFwX1LW2kJ/eSYrXiI19/gn8ejRoi7HUlsQ/z5WKxnB/sij8u0hou4xH+/tPXohoEFAJd/vz29gs8E1Y2k+3VFz56SRo6RhC4IEFgOGGaeI/qU/us8iuG8Mdf3t5+xv8uhaUFlA56+l8uv+KfklIbaK0oabmNYjdvyLIQFi0X+MHK3RG5cbRdyk9767J3gZf/it8IutLroH7Dj3zDP2WFFiwZyfciw0UWQamSnA25RrSQzLlYFzsPdJZv+I2/XYUavOWP/F4wMRYZKQtzJ6nlkchye6eejKW2CU78e/7Ct0EdFIKP//Tt7Q94RGkgEE3PI1ezGhBRLkt3EuGHnuLyJAT98fYN+pZX5VPU75jHSD1UF103y23QFIhxaUFk8gY2Qh9DV/E6qWdJUNai+pGYfVM7c+q96Jrolw+PeddcymGyGhaoEmoYCD2Lvqdv2e+2ThNHqhb38sG1tRXvTPgL97JhlSTnmuT7PAo9OUzFXkctcWWNPpglpEQXkohmm0qiLGTeFDSpq//P5Zgi6wYkUNbosmH5OxWGWBScpQLKwaoy+R9Z2t26tyKBsi5PzIYZfy/+je2oFNegXBoIjmHzGHBVgtEoosrymL1aQhn0W5l9qAkEuaPREwt5RheomH6nzU0OXhB9NBrRLneM20PRiu8Qtw2Wn1JdaJcjSaMNFI1rh6Av03EqY3RZEyPYYTsoqidT79F0TALhWOs2UDEJop52ByZNM3LHIoHUjhtDZbTfJfdhAl2NaAg0soZQczLSMnuKThWCdUUsCO9qAkWj+N2QcrkIXbWBWvQZnkqC49Vo0RbKu0e/q6NqCuXelwkXDXlkaAV1dPqOmSXBefDy4beACu/OpIGzX6ImUOShpN98Vye5AS+kC0bXoALS8e7s5EzArUi5HdRDWSSgGe2NR4ciLb9MgN2KdPZ6KFKRRx2YjAjEaEmFDUjKq7AOSoc6x2xvO4uNLwZpuy8E0QrM86jXQBHmtt82l6HPoPyWXQSnmzXtXJVQBjS96RANhjw52W37LTegb1RCQe9cdul5Fh9/tw5wuIoZQVWSVUEZN4RN5BBHd1p/I+xVNIQaFVDgb14HPZHpOyJsTq+5uNzXvTIUSTBxayhkuQVpWRtiqFRNNsrwOS82WzMFC9tXxF4Eraiwqi6gKrMIRRJMe59A20FJWtasWFUfSrJhUND1svYepXtlKE9v1QR4lSl3QAoVwBrCuj0USspQSftkQ7zqEChQ0CkXncJB4hUkadsCqAqqhUiBmneOUcjSC9J6ZCZi1VyGivFv9m4Hpj4E4Qz4BA4US1DbLq7Qn4D9oKttBRRMC9ufxwN0g1xtGKICjt5kkhigoHjYX/GoPI/gZwOjswT4RbWLOTgtX0gA4FAm8fw6IgsFcaouSnWR5TaNA1TZDVxewZgMCsFnaoq7PLel5vzq21rI3EyrcqMuojqiUGA9szIMW/ravPqWDmKu9ZKnBLxWWFOoLf7PpkJRSFvfbLQqWYbFmS9hvy2BIpP+5aIFobViNvvl+TTpKKfnF2V5eb5WjQj2g/oVL3dotJI6lspgyxW51n6dnKfT6cMNkn/8PJHAPHV2HsfPEZ6f9R2AAkCz0PfQMOUtnFa72Wx2CxGR2Wy6euYDHzuSx64Br6pCgIJQWhiwIb6iZp92D30QUa7pavLKsLaSdcCpYLEzAyh4QA0IVsAcfLLrj4hg7caTF+bwYpZeCgoYygXHU5Kx5VAPf+kbCVNNx+MJNeJczINhqCdYBXVzKKgQMoXJoO407h8JUz2sxmOqLJtPplx4pIpzKDCkHKUsh2xlsXf3QALJqSaE6sB0BZ4OjrzJocDPpfoOuWQ952V6NyZCRZeG6eyqqPSyPBCAykTZgmh4enm4IxNQjX0asJDq6V6uNnAu0TmJ5gbP9yRSqbIhh3qinQ6cWtRSdKrp9d5MuA+Ox8SCJEbipRHYvGQbmgMaY/EcBeBQvuLjMya9Uu3GzK8eYUgNng7h0dGgbtkyKIsUKjLTbLob4yD8Mt7162bnMeuDMFvg8snitQYOz6pOa03jk8R0ZvE3d7Tz7VSSvrEBSeOxJVcvkZbIEYFUMZKTz6bPA1lON8aJ2cNuxcwABgQj5PUKhQIVJRrEK1pMUUUJ482mrwNVXm+hms12p7wNru8VN+DaIt0PutmWhCmajsm2vIl47ZQVGn/9+ItTdUZ62L3QEMi+MjfgEimBai6gECwdS9lldiIgf39/f3///je1YDdVUS3JUA8zrio7txWHmms4z/lkmovMNQlFzc7Qxj/vX4i8/yh1zdZaGsjmexBetUViRHrQsIEOBEovvhOc/AdjYlSnW7QE5RD/A9iPeJVOihccJn0N9AVQZOL5RShqB09//yLkO8FujSS68Emp0GZnHtfDoaioCBTkRJL1VgJqBf70RZZ/1EcaMSlaKsRfUBUgZwQKFt8BaulCebAvuPlzUVFfvvxZ6J6fy1Qgncp17Izbbw9TL2SlDaAWAOX4cs/IPwAe+K5Agf2eW0DNJgzpuSpLQf+DasF3LgLK5lBpQQsA9VWFelfdrgEUi76T6sR55v0v5VA2QBHzbQr+MnvpQ1NjpqnXVRUWBAWw8OYifOrIHd0sBASi+T9v9KmHFfcpf1XOUSIomCM2yXjUcGAgcQrMKSUR0vv+UaAgULWrFfJkwsfaZW0BFGhzyePUo4a73BFD6ZDn5NZ2drH7gaLsltkvH61zG5axVgzqCFAYYi4SMgxK1TIYbP1VUH23icu2lVlBWyUo+OOTSMimAqWMF2hI//qnrKfcwl1yn6wtuYYkUK8KlEmKPKcSinedH/9+f//+718VTbbDotp6kX/NA5WASjQIBLjyrICiKVmR9ulYxipBPShQpPLcaBAyUwb1UmypSNWdiWBN/MJ0gAoFKko1mN/Ih+8Eyi81NFaYVqW/t8Y6qz6pODqZTIgJFJ7H02Fao9zMjs3bDPxJH9MLhTKBh4RHPpfnaLAbYYmHWPCLcgzCX248OU3G+Vfsf3pBBM8FhsJR0zc0F7KNjmgxXFnr3mGArECJNAObJ12qoDykW5sbOnxn2fEqL5FmXUi9mY+7EFTDHccqXWUmSpdImp+iM3k5FEx5dB/WdYMas853/GCjdjyTB6PijA9Fe5guaCMTVk7N+Zr7OoeCHQm49iRblf6vTkWmE6CYzC60xBsE8jw6IltwWthvVjc31Lir8ig1+FDm0ckSJE40+ryd/Wbj58pwmieTU7NWprwY3vM5FxOgIPvhuTwrqkx/tUyr6sBGKp4mVNJYdIOh2BkavIqFf8SrWMg4tlEVGVgMxqoNZzRbNhpdcEUd12wVa+BI6315pNKGENT9plA0V9srnn/wOhVfrfi8gR1XVMa3x9L1PoKCdyVQV286LJ+yiZTX0wq6x3R1YsO8lwb9RYzZB46yM4GvIcP+DbKdpun6x+yBD3/xp+Slz5qhp/pxMRObBHwPB1tDtgbMfigAszYfAp/9QYX45yZfacrLu8cAW4/M4FtsX8KW9T+N7mhuHEHlYQqXcbOya8UnhyOd972tuoPDhzlGnUykNw5W2LVfJS77ddWs7ALjkRkZU8fWI3vTxQ4ODSBheQ2RfXBt5hBns91q/Pzq+6/P41XTVUuy4EDeFSDs5mCuhSZ2BUGlQBa56IGnVot9kFXwYnzj9AIORZnCIUxtgDdH0lYlMtu5gXUHtGmtq9YiM20sXWy21uWdZqC7A1l5o4trLWcRWzPRwVs2RAGb2aDbpxgU2XpKNzPrlKpJsOnMRANvpsNcNRlb+U7Flko2yU/XsnLHugcW9nG2lwMfrbrwoqWwpZJuPiWLlBrS2EbJXkZ6BTlzNQ0SnSx/XIgWiptP6Q55tpxFgyhEwl61lZuO75UgK3ripArfJ8+hyJLogS0mWzH7pD/uZ6cLIOXjbbE9CK/yIawoB979GJSg6KkLfsLBcrfswwN7vJuKRdvO8jA9S/Ml5GyzOOUgnZguXnchduIgK5RurXidjFfn3bSz7M6r8UlaPHykZ5sDbjzpghT5jAPRq9h+YllRb5vxVJlHFnmLy3ueXX3GgTr3XDqwZrlRzXUyt8gxYhu6dL5GpJx8Ug7zkI55kKiQZcXbXtU138YW2/qmG6y0ExvkS1AuUYt60Bfv8kwer72nuTxu14ElttUE3MmPV64moG5VOAaJUJ6ynXSzzTKzo2TZdpM6ebqV9sTifcz0fJiv3vtSOEpHD8CUD0XjAx8IoeI276aCyOeVJqXT99fvS2C3Nux7Pz5elLw2uFB/kiJUNRS7VGju3PngoTu6fNA7P0qXJZUvmmL3pYR3PfOb+xNLr+ULnCpuv2IPZ/ejwiMFtic5KhNUXcnFtp3u193vTLnOlA/yqDvZRX+qgxo6bIiZtD3D1EjcyxM7Ql48V3sFStwNZKflbdo3in552rAv7VVfl1Vzo5rFz+jM11qvWO4o5Wkrqbk5rfaat5hnlkWo9eVbeUEe8R3uh9qb7+rvntPFgaZ56t58AQ4gjTYiuSd67auvXYgXiw3pj3luv01daKh9ZKIO8q5dEHj1lj4rlE4THDaOXn2W43MgC+mOXGksw6v38H1ydaCWysXUIlm7SqJvApSXGO46ke+22qefvfX6n7G2lBN8/jKJA72c8itx8qf0vBhbKjNrXnj1lsFGUDlWXLzT0NtuQseFti3lVBP9D9gGuU642RbPJGalO+C6QeGnIq9cqx+X5iYNY8MI2N19+Pa+wDDiMN1U3RV59KKGr2v01BBfLld1vyF9236+xNccLuf7+nHGMq1MKTdB4WfX20WnYv242IatXtTi2Vx0I9y0HNwcNqFRHyf7gCISYA9efnJ/5mHpZZvwysWZPUNhQW5gxHEYJZm52B99PLVv2/5xvzCzZJOuYyNwP+36dfIfWNNxZ4GB8RAAAAAASUVORK5CYII=" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Dhruv's Chatbot</span>
+									<p>Ask me anything!</p>
+								</div>
+							</div>
+						</div>
+						<div id="messageFormeight" class="card-body msg_card_body">
+							
+							
+						</div>
+						<div class="card-footer">
+							<form id="messageArea" class="input-group">
+                                <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
+								<div class="input-group-append">
+									<button type="submit" id="send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$(document).ready(function() {
+				$("#messageArea").on("submit", function(event) {
+					const date = new Date();
+					const hour = date.getHours();
+					const minute = date.getMinutes();
+					const str_time = hour+":"+minute;
+					var rawText = $("#text").val();
+
+					var userHtml = '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + rawText + '<span class="msg_time_send">'+ str_time + '</span></div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>';
+					
+					$("#text").val("");
+					$("#messageFormeight").append(userHtml);
+
+					$.ajax({
+						data: {
+							msg: rawText,	
+						},
+						type: "POST",
+						url: "/get",
+					}).done(function(data) {
+						var botHtml = '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://dhruv-saxena-25.github.io/web/profile.jpg" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + data + '<span class="msg_time">' + str_time + '</span></div></div>';
+						$("#messageFormeight").append($.parseHTML(botHtml));
+					});
+					event.preventDefault();
+				});
+			});
+		</script>
+        
+    </body>
+</html>
